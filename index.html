@@ -183,7 +183,6 @@
     </style>
 </head>
 <body>
-
     <script>
         // Verifica o estado de autenticação
         auth.onAuthStateChanged((user) => {
@@ -197,6 +196,8 @@
             }
         });
     </script>
+
+    <!-- Resto do seu código original aqui -->
 
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     
@@ -223,11 +224,80 @@
                 </div>
             </div>
         </div>
-        <!-- Adicione mais módulos conforme necessário -->
+        <div class="module">
+            <h3>Módulo 2: Conteúdo Avançado</h3>
+            <div class="accordion-title" onclick="toggleAccordion(this)">Aula 2: Recursos Avançados</div>
+            <div class="accordion-content">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+                <div class="rating">
+                    <span class="star" onclick="rateLesson(2, 5)">★</span>
+                    <span class="star" onclick="rateLesson(2, 4)">★</span>
+                    <span class="star" onclick="rateLesson(2, 3)">★</span>
+                    <span class="star" onclick="rateLesson(2, 2)">★</span>
+                    <span class="star" onclick="rateLesson(2, 1)">★</span>
+                </div>
+            </div>
+        </div>
+        <div class="module">
+            <h3>Módulo 3: Exemplos Práticos</h3>
+            <div class="accordion-title" onclick="toggleAccordion(this)">Aula 3: Casos de Estudo</div>
+            <div class="accordion-content">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
+                <div class="rating">
+                    <span class="star" onclick="rateLesson(3, 5)">★</span>
+                    <span class="star" onclick="rateLesson(3, 4)">★</span>
+                    <span class="star" onclick="rateLesson(3, 3)">★</span>
+                    <span class="star" onclick="rateLesson(3, 2)">★</span>
+                    <span class="star" onclick="rateLesson(3, 1)">★</span>
+                </div>
+            </div>
+        </div>
+        <div class="module">
+            <h3>Módulo 4: Revisão e Feedback</h3>
+            <div class="accordion-title" onclick="toggleAccordion(this)">Aula 4: Revisando Conceitos</div>
+            <div class="accordion-content">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_4" allowfullscreen></iframe>
+                <div class="rating">
+                    <span class="star" onclick="rateLesson(4, 5)">★</span>
+                    <span class="star" onclick="rateLesson(4, 4)">★</span>
+                    <span class="star" onclick="rateLesson(4, 3)">★</span>
+                    <span class="star" onclick="rateLesson(4, 2)">★</span>
+                    <span class="star" onclick="rateLesson(4, 1)">★</span>
+                </div>
+            </div>
+        </div>
+        <div class="module">
+            <h3>Módulo 5: Aplicação Prática</h3>
+            <div class="accordion-title" onclick="toggleAccordion(this)">Aula 5: Aplicando o Conhecimento</div>
+            <div class="accordion-content">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_5" allowfullscreen></iframe>
+                <div class="rating">
+                    <span class="star" onclick="rateLesson(5, 5)">★</span>
+                    <span class="star" onclick="rateLesson(5, 4)">★</span>
+                    <span class="star" onclick="rateLesson(5, 3)">★</span>
+                    <span class="star" onclick="rateLesson(5, 2)">★</span>
+                    <span class="star" onclick="rateLesson(5, 1)">★</span>
+                </div>
+            </div>
+        </div>
+        <div class="module">
+            <h3>Módulo 6: Avaliação Final</h3>
+            <div class="accordion-title" onclick="toggleAccordion(this)">Aula 6: Teste seus Conhecimentos</div>
+            <div class="accordion-content">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_6" allowfullscreen></iframe>
+                <div class="rating">
+                    <span class="star" onclick="rateLesson(6, 5)">★</span>
+                    <span class="star" onclick="rateLesson(6, 4)">★</span>
+                    <span class="star" onclick="rateLesson(6, 3)">★</span>
+                    <span class="star" onclick="rateLesson(6, 2)">★</span>
+                    <span class="star" onclick="rateLesson(6, 1)">★</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
-        &copy; 2024 Plataforma de Aulas
+        <p>© 2024 Plataforma de Aulas. Todos os direitos reservados.</p>
     </div>
 
     <script>
@@ -240,36 +310,28 @@
 
         function toggleAccordion(element) {
             const content = element.nextElementSibling;
-            const isOpen = content.style.maxHeight;
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+        }
 
-            if (isOpen) {
-                content.style.maxHeight = null; // Fecha o conteúdo
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px"; // Abre o conteúdo
-            }
+        function rateLesson(module, rating) {
+            alert('Você avaliou a Aula ' + module + ' com ' + rating + ' estrelas!');
         }
 
         function toggleTheme() {
-            const body = document.body;
+            document.body.classList.toggle('dark');
             const navbar = document.querySelector('.navbar');
-            const modules = document.querySelectorAll('.module');
-            const accordionTitles = document.querySelectorAll('.accordion-title');
-            const accordionContents = document.querySelectorAll('.accordion-content');
-            const footer = document.querySelector('.footer');
-
-            body.classList.toggle('dark');
             navbar.classList.toggle('dark');
+            const modules = document.querySelectorAll('.module');
             modules.forEach(module => module.classList.toggle('dark'));
+            const accordionTitles = document.querySelectorAll('.accordion-title');
             accordionTitles.forEach(title => title.classList.toggle('dark'));
+            const accordionContents = document.querySelectorAll('.accordion-content');
             accordionContents.forEach(content => content.classList.toggle('dark'));
+            const footer = document.querySelector('.footer');
             footer.classList.toggle('dark');
-        }
-
-        function rateLesson(lessonId, rating) {
-            console.log(`Aula ${lessonId} avaliada com ${rating} estrelas.`);
-            // Aqui você pode implementar o envio da avaliação para o servidor
         }
     </script>
 </body>
 </html>
+
 
